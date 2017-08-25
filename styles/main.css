@@ -1,0 +1,30 @@
+.wrapper {
+  margin: auto;
+  width: 400px;
+  height: 400px;
+}
+
+button {
+  display: block;
+  cursor: pointer;
+  margin: auto;
+}
+
+table {
+  margin: 50px auto;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 0px;
+  float:left;
+}
+.square {
+  background-color: black;
+  width: 40px;
+  height: 40px;
+}
+
+.square:hover {
+  background-color: yellow;
+}
