@@ -1,33 +1,66 @@
-$('body').append('<div class="wrapper"></div>');
-$('.wrapper').append('<button onclick="reset();">Reset</button>' + '<table></table>');
+$("body").append(
+  "<div class='buttons'><button onclick='reset(); return false;'>Reset</button>" +
+  "<button onclick='clearance(); return false;'>Clear</button>" +
+  "<button onclick='rainbow(); return false;'>Rainbow</button>" +
+  "<button onclick='classic(); return false;'>Classic</button>" +
+  "<button onclick='bonus(); return false;'>Bonus</button></div>" +
+  "<div class='wrapper'><img src='images/rv.png'></div>"
+);
+$(".wrapper").append(  "<table></table>");
+defaultGrid(10);
 
-for (i=0; i < 10; i++) {
-  $('table').append('<tr></tr>');
+function rainbow(){
+  $(".square").hover(function(){
+    var r = Math.floor(Math.random() * 256);
+    var g = Math.floor(Math.random() * 256);
+    var b = Math.floor(Math.random() * 256);
+    var color = "rgb(" + r + ", " + g+ ", " + b + ")";
+    $(this).css({
+      "background-color" : color
+    });
+  });
 }
 
-for (i=0; i < 10; i++) {
-  $('tr').append('<td><div class="square"></div></td>');
+function bonus(){
+  $(".square").hover(function(){
+    $(this).css({
+      "background-color" : "rgba(0, 0, 0, 0.0)"
+    });
+  });
 }
 
-function reset() {
-  $('body').html('');
+function classic() {
+  $(".square").hover(function(){
+    var y = 0;
+    var color = "rgb(" + y + ", " + y + ", " + y + ")";
+    $(this).css({
+      "visibility" : "visible",
+      "background-color" : color
+    });
+  });
+}
 
-  $('body').append('<div class="wrapper"></div>');
-  $('.wrapper').append('<button onclick="reset();">Reset</button>' + '<table></table>');
+function defaultGrid(grid){
+  pixel = 540 / grid + "px";
 
-  var userSize = prompt("Enter your grid size:", "Grid size");
-  var pixelSize = 400 / userSize + "px";
+  for (i=0; i < grid; i++) { $("table").append("<tr></tr>");}
+  for (i=0; i < grid; i++) {$("tr").append("<td><div class='square'></div></td>");}
 
-  for (i=0; i < userSize; i++) {
-    $('table').append('<tr></tr>');
-  }
+  $(".square").width(pixel).height(pixel);
+}
 
-  for (i=0; i < userSize; i++) {
-    $('tr').append('<td><div class="square"></div></td>');
-  }
+function reset(){
+  $('table').html("");
 
+  var gridR = prompt("Enter your grid size", "Grid size");
+  pixel = 540 / gridR + "px !important";
+
+defaultGrid(gridR);
+}
+
+function clearance(){
   $(".square").css({
-    "width" : pixelSize,
-    "height" : pixelSize
+    "visibility" : "visible",
+    "background-color" : "black"
   });
 }
