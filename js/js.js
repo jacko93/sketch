@@ -1,13 +1,14 @@
 $("body").append(
-  "<div class='buttons'><button onclick='reset(); return false;'>Reset</button>" +
-  "<button onclick='clearance(); return false;'>Clear</button>" +
-  "<button onclick='rainbow(); return false;'>Rainbow</button>" +
-  "<button onclick='classic(); return false;'>Classic</button>" +
-  "<button onclick='bonus(); return false;'>Bonus</button></div>" +
+  "<div class='buttons'><button onclick='reset();'>Reset</button>" +
+  "<button onclick='clearance();'>Clear</button>" +
+  "<button onclick='rainbow();'>Rainbow</button>" +
+  "<button onclick='classic();'>Classic</button>" +
+  "<button onclick='bonus();'>Bonus</button></div>" +
   "<div class='wrapper'><img src='images/rv.png'></div>"
 );
 $(".wrapper").append(  "<table></table>");
 defaultGrid(10);
+classic();
 
 function rainbow(){
   $(".square").hover(function(){
@@ -31,12 +32,7 @@ function bonus(){
 
 function classic() {
   $(".square").hover(function(){
-    var y = 0;
-    var color = "rgb(" + y + ", " + y + ", " + y + ")";
-    $(this).css({
-      "visibility" : "visible",
-      "background-color" : color
-    });
+    $(this).css("background-color", "rgb(255, 255, 255)");
   });
 }
 
@@ -50,12 +46,13 @@ function defaultGrid(grid){
 }
 
 function reset(){
-  $('table').html("");
-
+  $("table").html("");
   var gridR = prompt("Enter your grid size", "Grid size");
-  pixel = 540 / gridR + "px !important";
+  pixel = 540 / gridR + "px";
 
-defaultGrid(gridR);
+  defaultGrid(gridR);
+
+  $(".square").width(pixel).height(pixel);
 }
 
 function clearance(){
