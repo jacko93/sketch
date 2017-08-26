@@ -4,11 +4,40 @@ $("body").append(
   "<button onclick='rainbow();'>Rainbow</button>" +
   "<button onclick='classic();'>Classic</button>" +
   "<button onclick='bonus();'>Bonus</button></div>" +
-  "<div class='wrapper'><img src='images/rv.png'></div>"
+  "<div class='wrapper'>" +
+  "<img src='images/korean1.jpg' id='one'>" +
+  "<img src='images/korean2.jpg' id='two'>" +
+  "<img src='images/korean3.jpg' id='three'>" +
+  "<img src='images/rv.png' id='four'>" +
+  "<p id='krn'>Choose your BONUS korean girl background!</p>" +
+  "</div>" +
+  "<p id='cp'>Created by: <a href='https://github.com/jacko93'>jacko93</a></p>"
 );
 $(".wrapper").append(  "<table></table>");
 defaultGrid(10);
 classic();
+images();
+
+/* function images() {
+  var value = -99999  ;
+  $("img").click(function(){
+
+    $(this).css({
+      "width" : "540px",
+      "z-index" : value,
+      "top" : "0",
+      "right" : "0"
+    });
+    value += 1;
+  });
+}
+*/
+
+function images() {
+  $("img").click(function(){
+    $(this).clone().prop({id : "clone"}).appendTo(".wrapper");
+  });
+}
 
 function rainbow(){
   $(".square").hover(function(){
@@ -31,8 +60,14 @@ function bonus(){
 }
 
 function classic() {
+  var z = 0;
   $(".square").hover(function(){
-    $(this).css("background-color", "rgb(255, 255, 255)");
+
+    $(this).css("background-color", "rgb(" + z + ", " + z + ", " + z + ")");
+    z += 4
+    if (z >= 255) {
+      z = 0;
+    };
   });
 }
 
@@ -43,6 +78,8 @@ function defaultGrid(grid){
   for (i=0; i < grid; i++) {$("tr").append("<td><div class='square'></div></td>");}
 
   $(".square").width(pixel).height(pixel);
+
+  rainbow();
 }
 
 function reset(){
@@ -58,6 +95,6 @@ function reset(){
 function clearance(){
   $(".square").css({
     "visibility" : "visible",
-    "background-color" : "black"
+    "background-color" : "rgb(19, 7, 58)"
   });
 }

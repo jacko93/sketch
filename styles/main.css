@@ -1,14 +1,50 @@
 body {
-  background-color: rgb(255, 170, 170);
+  background-color: rgb(128, 128, 179);
   margin:0;
   padding: 0;
 }
 
+#krn {
+  position: absolute;
+  top: 430px;
+  right: 610px;
+  text-align: center;
+}
+
+#cp {
+  text-align: center;
+}
+
 img {
   position: absolute;
-  z-index: -1;
 }
+
+img#one, img#two, img#three, img#four {
+  width: 100px;
+  right: 600px;
+}
+
+img#two {
+  top: 105px;
+}
+
+img#three {
+  top: 210px;
+}
+
+img#four {
+  top: 315px;
+}
+
+img#clone {
+  z-index: -9999;
+  width: 540px;
+  top: 0;
+  right: 0;
+}
+
 .wrapper {
+  position: relative;
   margin: auto;
   width: 540px;
   height: 540px;
@@ -24,7 +60,7 @@ img {
 }
 
 button {
-  background-color: white);
+  background-color: white;
   border: 2px solid rgb(85, 0, 0);
   border-radius: 10px;
   width: 80px;
@@ -49,7 +85,7 @@ td {
   float:right;
 }
 .square {
-  background-color: black;
+  background-color: rgb(19, 7, 58);
   width: 40px;
   height: 40px;
 }
